@@ -13,3 +13,8 @@ RUN npm run build --prod
 FROM nginx:1.15.8-alpine
 
 COPY --from=builder /usr/src/app/dist/todo-app/ /usr/share/nginx/html
+
+
+COPY nginx.conf /etc/nginx/conf.d/
+
+RUN rm /etc/nginx/conf.d/default.conf
